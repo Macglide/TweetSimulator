@@ -2,15 +2,74 @@
 # This file will be used at compile time to generate Spring-MVC endpoint stubs using openapi-generator
 openapi: '3.0.1'
 info:
-  title: 'TwitterSimulator'
+  title: 'TwitterFeed'
   version: 0.0.1
 servers:
-  - url: http://localhost:8081/api
+  - url: http://localhost:8083/api
     description: Development server
-  - url: https://localhost:8081/api
+  - url: https://localhost:8083/api
     description: Development server with TLS Profile
-paths: {}
+paths:
+  /twitter-feed:
+    post:
+      tags:
+        - Twitter Feed
+      description: receive two files, user and tweet text files.
+      operationId: updateTwitterFeed
+      requestBody:
+        description: simulate tweeter feed using this file of users
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                userfile:
+                  type: string
+                  format: binary
+                tweetfile:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        '200':
+          description: Successfully uploaded files
+          content:
+            application/json:
+              schema:
+                type: String
+        #                items:
+        #                  #type: string
+        #                  $ref: '#/components/schemas/UserDTO'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
 components:
+  schemas:
+    #    UserList:
+    #      type: array
+    #      items:
+    #        $ref: '#/components/schemas/UserDTO'
+    #    UserDTO:
+    #      type: object
+    #      properties:
+    #        username:
+    #          type: string
+    #        tweet:
+    #          type: string
+    ErrorModel:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
   responses:
     Problem:
       description: error occurred - see status code and problem object for more information.
@@ -18,7 +77,6 @@ components:
         'application/problem+json':
           schema:
             $ref: 'https://opensource.zalando.com/problem/schema.yaml#/Problem'
-
   securitySchemes:
     jwt:
       type: http
