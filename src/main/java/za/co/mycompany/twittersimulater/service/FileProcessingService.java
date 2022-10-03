@@ -10,9 +10,9 @@ import za.co.mycompany.twittersimulater.web.rest.TwitterResource;
 public class FileProcessingService {
 
     Logger logger = LoggerFactory.getLogger(FileProcessingService.class);
-    private Map<String, ArrayList<String>> userMap = new HashMap<>();
+    private final Map<String, ArrayList<String>> userMap = new HashMap<>();
 
-    private LinkedHashMap<String, ArrayList<String>> userTweetsMap = new LinkedHashMap<>();
+    private final LinkedHashMap<String, ArrayList<String>> userTweetsMap = new LinkedHashMap<>();
 
     public void handleUserFileLines(String string) {
         String user;
