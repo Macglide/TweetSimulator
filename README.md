@@ -1,9 +1,67 @@
+# TwitterFeed
+
+Program that simulates a twitter-like feed.Program will receive two seven-bit ASCII files. The first file contains a list of users and their followers. The second file contains tweets. Given the users, followers and tweets, the objective is to display a simulated twitter feed for each user to the console.
+
+The program should be well designed, handle errors and should be of sufficient quality to run on a production system. Indicate all assumptions made in completing the assignment.
+
+Each line of a well-formed user file contains a user, followed by the word 'follows' and then a comma separated list of users they follow. Where there is more than one entry for a user, consider the union of all these entries to determine the users they follow.
+
+Lines of the tweet file contain a user, followed by greater than, space and then a tweet that may be at most 140 characters in length. The tweets are considered to be posted by the each user in the order they are found in this file.
+
+Your program needs to write console output as follows. For each user / follower (in alphabetical order) output their name on a line. Then for each tweet, emit a line with the following format: @user: message.
+
+Here is an example. Given user file named user.txt:
+
+Ward follows Alan
+
+Alan follows Martin
+
+Ward follows Martin, Alan
+
+And given tweet file named tweet.txt:
+
+Alan> If you have a procedure with 10 parameters, you probably missed some.
+
+Ward> There are only two hard things in Computer Science: cache invalidation, naming things and off-by-1 errors.
+
+Alan> Random numbers should not be generated with a method chosen at random.
+
+So invoking the program with user.txt and tweet.txt as arguments should produce the following console output:
+
+Alan
+
+@Alan: If you have a procedure with 10 parameters, you probably missed some.
+
+@Alan: Random numbers should not be generated with a method chosen at random.
+
+Martin
+
+Ward
+
+@Alan: If you have a procedure with 10 parameters, you probably missed some.
+
+@Ward: There are only two hard things in Computer Science: cache invalidation, naming things and off-by-1 errors.
+
+@Alan: Random numbers should not be generated with a method chosen at random.
+
 # TwitterSimulator
 
 This application was generated using JHipster 7.9.2, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.2](https://www.jhipster.tech/documentation-archive/v7.9.2).
 
-This is a "microservice" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
-This application is configured for Service Discovery and Configuration with . On launch, it will refuse to start if it is not able to connect to .
+# Instructions on how to run the program
+
+Start the application in the dev profile, (below command). It will start on localhost:8081.
+Do a POST localhost:8081/api/twitter-feed call, with content-type multipart/form-data.
+Provide below parameters.
+
+```
+./mvnw
+```
+
+```
+Parameters to provide when making POST localhost:8081/api/twitter-feed call.
+userFile = <filename>.txt, tweetFile = <filename>.txt
+```
 
 ## Project Structure
 
@@ -22,7 +80,7 @@ In the project root, JHipster generates configuration files for tools like git, 
 
 ## Development
 
-To start your application in the dev profile, run:
+To start this application in the dev profile, run:
 
 ```
 ./mvnw
