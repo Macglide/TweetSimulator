@@ -4,12 +4,11 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import za.co.mycompany.twittersimulater.web.rest.TwitterResource;
 
 @Service
-public class FileProcessingService {
+public class FileProcessingServiceImpl implements FileProcessingService {
 
-    Logger logger = LoggerFactory.getLogger(FileProcessingService.class);
+    Logger logger = LoggerFactory.getLogger(FileProcessingServiceImpl.class);
     private final Map<String, ArrayList<String>> userMap = new HashMap<>();
 
     private final LinkedHashMap<String, ArrayList<String>> userTweetsMap = new LinkedHashMap<>();
