@@ -12,6 +12,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import za.co.mycompany.twittersimulater.service.FileProcessingService;
+import za.co.mycompany.twittersimulater.service.FileProcessingServiceImpl;
 
 public class TwitterResourceTest {
 
